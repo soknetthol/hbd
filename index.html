@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Birthday Surprise</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fff5f7; --fg: #3b1f2b; --accent: #e8457c; --accent-fg: #fff; --card: #ffffff;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #1e1218; --fg: #ffe9f0; --accent: #ff6b9d; --accent-fg: #2a0f1a; --card: #2b1a23; }
+}
+:root[data-theme="dark"] { --bg: #1e1218; --fg: #ffe9f0; --accent: #ff6b9d; --accent-fg: #2a0f1a; --card: #2b1a23; }
+html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+body {
+  margin: 0; height: 100%; background: var(--bg); color: var(--fg);
+  font-family: "Noto Sans Khmer", system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
+.card { background: var(--card); padding: 40px 28px; border-radius: 20px; width: min(90%, 420px); box-shadow: 0 8px 30px rgba(0,0,0,.12); }
+h1 { margin: 0 0 24px; font-size: 1.8rem; }
+button {
+  font: inherit; font-weight: 700; font-size: 1.1rem; padding: 12px 28px; border: 0; border-radius: 999px;
+  background: var(--accent); color: var(--accent-fg); cursor: pointer;
+}
+button:active { transform: scale(.97); }
+#msg { margin-top: 28px; min-height: 90px; }
+#msg .en { font-size: 2rem; font-weight: 700; color: var(--accent); }
+#msg .km { font-size: 1.6rem; margin-top: 8px; }
+#msg.show { animation: pop .5s ease; }
+@keyframes pop { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: scale(1); } }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🎂 Birthday Surprise</h1>
+  <button id="btn">Click me</button>
+  <div id="msg" aria-live="polite"></div>
+</div>
+<script>
+document.getElementById("btn").addEventListener("click", function () {
+  var m = document.getElementById("msg");
+  m.className = "";
+  void m.offsetWidth;
+  m.innerHTML = '<div class="en">🎉 Happy Birthday! 🎉</div><div class="km">ជូនពរ 🎈</div>';
+  m.className = "show";
+});
+</script>
+</body>
+</html>
