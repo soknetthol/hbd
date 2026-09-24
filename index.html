@@ -18,22 +18,25 @@
 :root[data-theme="dark"] { --bg: #1e1218; --fg: #ffe9f0; --accent: #ff6b9d; --accent-fg: #2a0f1a; --card: #2b1a23; }
 html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
 body {
-  margin: 0; height: 100%; background: var(--bg); color: var(--fg);
+  margin: 0; min-height: 100%; background: var(--bg); color: var(--fg);
   font-family: "Noto Sans Khmer", system-ui, -apple-system, "Segoe UI", sans-serif;
   display: flex; align-items: center; justify-content: center; text-align: center;
 }
-.card { background: var(--card); padding: 40px 28px; border-radius: 20px; width: min(90%, 420px); box-shadow: 0 8px 30px rgba(0,0,0,.12); }
+.card { background: var(--card); padding: 40px 28px; margin: 20px 0; border-radius: 20px; width: min(90%, 460px); box-shadow: 0 8px 30px rgba(0,0,0,.12); }
 h1 { margin: 0 0 24px; font-size: 1.8rem; }
 button {
   font: inherit; font-weight: 700; font-size: 1.1rem; padding: 12px 28px; border: 0; border-radius: 999px;
   background: var(--accent); color: var(--accent-fg); cursor: pointer;
 }
 button:active { transform: scale(.97); }
-#msg { margin-top: 28px; min-height: 90px; }
+#msg { margin-top: 28px; }
 #msg .en { font-size: 2rem; font-weight: 700; color: var(--accent); }
 #msg .km { font-size: 1.6rem; margin-top: 8px; }
+#msg h2 { font-size: 1.3rem; margin: 28px 0 12px; color: var(--accent); }
+#msg p { line-height: 1.7; margin: 0 0 12px; text-align: left; }
+#msg p.c { text-align: center; }
 #msg.show { animation: pop .5s ease; }
-@keyframes pop { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: scale(1); } }
+@keyframes pop { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: scale(1); } }
 </style>
 </head>
 <body>
@@ -47,7 +50,11 @@ document.getElementById("btn").addEventListener("click", function () {
   var m = document.getElementById("msg");
   m.className = "";
   void m.offsetWidth;
-  m.innerHTML = '<div class="en">🎉 Happy Birthday! 🎉</div><div class="km">ជូនពរ 🎈</div>';
+  m.innerHTML =
+    '<div class="en">🎉 Happy Birthday! 🎉</div>' +
+    '<p class="c">រីករាយថ្ងៃកំណើតMazer 🎉🎂</p>' +
+    '<p>សូមជូនពរឱ្យមានសុខភាពល្អ សំណាងល្អ និងជោគជ័យគ្រប់រឿង។ សូមឱ្យការសិក្សារបស់យើងទាំងអស់គ្នាកាន់តែរីកចម្រើន ប្រឡងបានពិន្ទុល្អៗ 📚✨ ហើយសម្រេចបានគ្រប់ក្តីស្រមៃដែលយើងបានគ្រោងទុក។</p>' +
+    '<p>សង្ឃឹមថាយើងនឹងនៅតែរៀន និងជួយគ្នាទៅមុខជាមួយគ្នារហូត។ ❤️🤝</p>';
   m.className = "show";
 });
 </script>
